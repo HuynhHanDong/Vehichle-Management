@@ -9,6 +9,7 @@ package models;
  *
  * @author Huynh Han Dong
  */
-public interface VehicleList {
+public interface InterfaceVehicleList {
+    
     
 }

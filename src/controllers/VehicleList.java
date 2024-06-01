@@ -9,6 +9,6 @@ package controllers;
  *
  * @author Huynh Han Dong
  */
-public interface InterfaceVehicleList {
+public class VehicleList {
     
 }
