@@ -10,6 +10,19 @@ package models;
  * @author Huynh Han Dong
  */
 public interface InterfaceVehicleList {
+    void add();
     
+    void check();
     
+    void update();
+    
+    void delete();
+    
+    void searchId();
+    
+    void searchName();
+    
+    void display();
+    
+    void displayDecsendingPrice();
 }

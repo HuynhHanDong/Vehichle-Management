@@ -88,7 +88,7 @@ public class Vehicle {
     }
     
     @Override
-    public String display(){
+    public String toString(){
         return "ID:" + id + " Name:" + name + " Color:" + color + " Price:" + price + " Brand:" + brand + " Type:" + type + " Product year:" + productYear;
     }
 }
