@@ -5,6 +5,8 @@
  */
 package models;
 
+import controllers.VehicleList;
+
 /**
  *
  * @author Huynh Han Dong
@@ -22,7 +24,15 @@ public interface InterfaceVehicleList {
     
     void searchName();
     
-    void display();
+    void displayAll();
     
     void displayDecsendingPrice();
+    
+    void saveToFile();
+    
+    void printAll();
+    
+    void printDecsendingPrice();
+    
+    VehicleList readFile();
 }

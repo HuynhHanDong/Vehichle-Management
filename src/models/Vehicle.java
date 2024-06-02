@@ -5,11 +5,13 @@
  */
 package models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Huynh Han Dong
  */
-public class Vehicle {
+public class Vehicle implements Serializable{
     private String id;
     private String name;
     private String color;
