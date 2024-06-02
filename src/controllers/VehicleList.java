@@ -45,7 +45,8 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
             this.add(vehicle);
             System.out.println("Added Successfully");
             this.saveToFile();
-        } catch (Exception e){
+        }
+        catch (Exception e){
             System.out.println("Failed to add");
         }
     }
@@ -59,7 +60,7 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         for (Vehicle veh : list){
             if (veh.getID().equals(id)){
                 System.out.println("Exist vehicle.");
-                break;
+                return;
             }
         }
         System.out.println("No vehicle found!");
@@ -68,7 +69,7 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
     @Override
     public void update() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter id to check: ");
+        System.out.print("Enter id to update: ");
         String id = scan.nextLine();
         VehicleList list = this.readFile();
         for (Vehicle veh : list){
@@ -91,8 +92,10 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
                 System.out.print("Enter price: ");
                 int price = scan.nextInt();
                 veh.setPrice(price);
-                System.out.println("Updated");
-                break;
+                
+                System.out.println("Updated" + veh.toString());
+                this.saveToFile();
+                return;
             }
         }
         System.out.println("Vehicle does not exist.");
@@ -106,13 +109,14 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         VehicleList list = this.readFile();
         for (Vehicle veh : list){
             if (veh.getID().equals(id)){
-                System.out.println("Are you sure you want delete this vehicle?  yes\no");
+                System.out.println("Delete this vehicle?  yes\no");
                 String ans = scan.nextLine();
                 if (ans == "yes"){
                 list.remove(list.indexOf(veh.getID()));
                 System.out.println("Deleted");
+                this.saveToFile();
                 }
-            break;
+            return;
             }
         }
         System.out.println("Vehicle does not exist.");
@@ -127,7 +131,7 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         for (Vehicle veh : list){
             if (veh.getID().equals(id)){
                 System.out.println(veh.toString());
-                break;
+                return;
             }
         }
         System.out.println("No vehicle found!");

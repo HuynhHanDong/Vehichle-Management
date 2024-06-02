@@ -35,6 +35,7 @@ public class WorkWithFile {
             System.out.println("8. Exist");
         
             Scanner scan = new Scanner(System.in);
+            System.out.print("Enter your choice: ");
             int choice = scan.nextInt();
         
             if (choice == 0) {
@@ -52,22 +53,23 @@ public class WorkWithFile {
             else if (choice == 4) {
                 System.out.println("4.1 Search by id");
                 System.out.println("4.2 Search by name");
-                float num4 = scan.nextFloat();
+                double num4 = scan.nextDouble();
                 if (num4 == 4.1) {
                     list.searchId();
                 }
                 else if (choice == 4.2) {
                     list.searchName();
+                    System.out.println("ok");
                 }
             } 
             else if (choice == 5) {
                 System.out.println("5.1 Display all");
                 System.out.println("5.2 Display all descending by price");
-                float num5 = scan.nextFloat();
+                double num5 = scan.nextDouble();
                 if (num5 == 5.1) {
                     list.displayAll();
-                } 
-                else if (choice == 4.2) {
+                }
+                else if (choice == 5.2) {
                     list.displayDecsendingPrice();
                 }
             } 
@@ -77,7 +79,7 @@ public class WorkWithFile {
             else if (choice == 7) {
                 System.out.println("7.1 Print all");
                 System.out.println("7.2 Print all descending by price");
-                float num7 = scan.nextFloat();
+                double num7 = scan.nextDouble();
                 if (num7 == 7.1) {
                     list.printAll();
                 } 
