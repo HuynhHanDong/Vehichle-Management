@@ -15,7 +15,7 @@ public class Vehicle implements Serializable{
     private String id;
     private String name;
     private String color;
-    private int price;
+    private double price;
     private String brand;
     private String type;
     private int productYear;
@@ -23,7 +23,7 @@ public class Vehicle implements Serializable{
     public Vehicle(){
     }
     
-    public Vehicle(String id, String name, String color, int price, String brand, String type, int productYear){
+    public Vehicle(String id, String name, String color, double price, String brand, String type, int productYear){
         this.id = id;
         this.name = name;
         this.color = color;
@@ -42,7 +42,7 @@ public class Vehicle implements Serializable{
     }
     
     public String getName(){
-        return id;
+        return name;
     }
     
     public void setName(String name){
@@ -50,18 +50,18 @@ public class Vehicle implements Serializable{
     }
     
     public String getColor(){
-        return id;
+        return color;
     }
     
     public void setColor(String color){
         this.color = color;
     }
     
-    public int getPrice(){
+    public double getPrice(){
         return price;
     }
     
-    public void setPrice(int price){
+    public void setPrice(double price){
         this.price = price;
     }
     

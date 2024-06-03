@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 import models.InterfaceVehicleList;
 import models.Vehicle;
@@ -74,26 +75,26 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         VehicleList list = this.readFile();
         for (Vehicle veh : list){
             if (veh.getID().equals(id)){
-                System.out.print("Enter name: ");
+                System.out.print("Enter new name: ");
                 String name = scan.nextLine();
                 veh.setName(name);
-                System.out.print("Enter color: ");
+                System.out.print("Enter new color: ");
                 String color = scan.nextLine();
                 veh.setColor(color);
-                System.out.print("Enter brand: ");
+                System.out.print("Enter new brand: ");
                 String brand = scan.nextLine();
                 veh.setBrand(brand);
-                System.out.print("Enter type: ");
+                System.out.print("Enter new type: ");
                 String type = scan.nextLine();
                 veh.setType(type);
-                System.out.print("Enter year of production: ");
+                System.out.print("Enter new year of production: ");
                 int productYear = scan.nextInt();
                 veh.setProductYear(productYear);
-                System.out.print("Enter price: ");
+                System.out.print("Enter new price: ");
                 int price = scan.nextInt();
                 veh.setPrice(price);
                 
-                System.out.println("Updated" + veh.toString());
+                System.out.println("Updated: " + veh.toString());
                 this.saveToFile();
                 return;
             }
@@ -109,15 +110,15 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         VehicleList list = this.readFile();
         for (Vehicle veh : list){
             if (veh.getID().equals(id)){
-                System.out.println("Delete this vehicle?  yes\no");
+                System.out.println("Are you sure you want to delete this vehicle?  yes/no");
                 String ans = scan.nextLine();
-                if (ans == "yes"){
-                list.remove(list.indexOf(veh.getID()));
-                System.out.println("Deleted");
-                this.saveToFile();
+                if ("yes".equals(ans)){
+                    list.remove(veh);
+                    System.out.println("Deleted");
+                    this.saveToFile();
                 }
-            return;
             }
+            return;
         }
         System.out.println("Vehicle does not exist.");
     }
@@ -140,14 +141,19 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
     @Override
     public void searchName() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter id to search: ");
+        System.out.print("Enter name to search: ");
         String name = scan.nextLine();
         VehicleList list = this.readFile();
-        list.sort(null);
+        list.sort(Comparator.comparing(Vehicle::getID).reversed());
+        boolean found = false;
         for (Vehicle veh : list){
             if (veh.getName().equals(name)){
                 System.out.println(veh.toString());
+                found = true;
             }
+        }
+        if (found == false) {
+            System.out.println("No vehicle found!");
         }
     }
 
@@ -161,7 +167,12 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
 
     @Override
     public void displayDecsendingPrice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        VehicleList list = this.readFile();
+        list.sort(Comparator.comparingDouble(Vehicle::getPrice).reversed());
+        System.out.println("All Vehicles sorted by price descending:");
+        for (Vehicle veh : list){
+            System.out.println(veh.toString());
+        }
     }
 
     @Override
@@ -187,7 +198,12 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
     
     @Override
     public void printDecsendingPrice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        VehicleList list = this.readFile();
+        list.sort(Comparator.comparingDouble(Vehicle::getPrice).reversed());
+        System.out.println("All Vehicles sorted by price descending:");
+        for (Vehicle veh : list){
+            System.out.println(veh.toString());
+        }
     }
 
     @Override
