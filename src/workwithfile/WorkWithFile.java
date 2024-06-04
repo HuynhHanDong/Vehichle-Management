@@ -23,7 +23,7 @@ public class WorkWithFile {
         InterfaceVehicleList list = new VehicleList();
         
         while (true) {
-            System.out.println("----- Menu -----");
+            System.out.println("\n----------- Menu -----------");
             System.out.println("0. Add new vehicle");
             System.out.println("1. Check existing vehicle");
             System.out.println("2. Update vehicle");
@@ -33,6 +33,7 @@ public class WorkWithFile {
             System.out.println("6. Save data to file");
             System.out.println("7. Print vehicle list");
             System.out.println("8. Exist");
+            System.out.println("----------------------------");
         
             try {
                 Scanner scan = new Scanner(System.in);
@@ -52,8 +53,10 @@ public class WorkWithFile {
                     list.delete();
                 } 
                 else if (choice == 4) {
+                    System.out.println("\n----------- Menu -----------");
                     System.out.println("4.1 Search by id");
                     System.out.println("4.2 Search by name");
+                    System.out.println("----------------------------");
                     System.out.print("Enter your choice: ");
                     double num4 = scan.nextDouble();
                     if (num4 == 4.1) {
@@ -67,8 +70,10 @@ public class WorkWithFile {
                     }
                 } 
                 else if (choice == 5) {
+                    System.out.println("\n----------- Menu -----------");
                     System.out.println("5.1 Display all");
-                    System.out.println("5.2 Display all descending by price");
+                    System.out.println("5.2 Display all by descending price");
+                    System.out.println("----------------------------");
                     System.out.print("Enter your choice: ");
                     double num5 = scan.nextDouble();
                     if (num5 == 5.1) {
@@ -85,8 +90,10 @@ public class WorkWithFile {
                     list.saveToFile();
                 } 
                 else if (choice == 7) {
+                    System.out.println("\n----------- Menu -----------");
                     System.out.println("7.1 Print all");
-                    System.out.println("7.2 Print all descending by price");
+                    System.out.println("7.2 Print all by descending price");
+                    System.out.println("----------------------------");
                     System.out.print("Enter your choice: ");
                     double num7 = scan.nextDouble();
                     if (num7 == 7.1) {
