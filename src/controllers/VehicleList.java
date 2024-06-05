@@ -41,14 +41,19 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         String name = scan.nextLine();
         System.out.print("Enter color: ");
         String color = scan.nextLine();
+        System.out.print("Enter new price: ");
+        double price = scan.nextInt();
+        scan.nextLine();
+        if (price <= 0) {
+            System.out.println("Price must be greater than 0. Try again.");
+            return;
+        }
         System.out.print("Enter brand: ");
         String brand = scan.nextLine();
         System.out.print("Enter type: ");
         String type = scan.nextLine();
         System.out.print("Enter year of production: ");
         int productYear = scan.nextInt();
-        System.out.print("Enter price: ");
-        double price = scan.nextInt();
         
         Vehicle vehicle = new Vehicle(id, name, color, price, brand, type, productYear);
         this.add(vehicle);
@@ -68,7 +73,7 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
                 return;
             }
         }
-        System.out.println("No vehicle found!");
+        System.out.println("No vehicle found");
     }
 
     @Override
@@ -83,18 +88,23 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
                 String name = scan.nextLine();
                 System.out.print("Enter new color: ");
                 String color = scan.nextLine();
+                System.out.print("Enter new price: ");
+                double price = scan.nextInt();
+                scan.nextLine();
+                if (price <= 0) {
+                    System.out.println("Price must be greater than 0. Try again.");
+                    return;
+                }
                 System.out.print("Enter new brand: ");
                 String brand = scan.nextLine();
                 System.out.print("Enter new type: ");
                 String type = scan.nextLine();
                 System.out.print("Enter new year of production: ");
                 int productYear = scan.nextInt();
-                System.out.print("Enter new price: ");
-                double price = scan.nextInt();
                 Vehicle vehicle = new Vehicle(id, name, color, price, brand, type, productYear);
                 
                 this.set(list.indexOf(veh), vehicle);
-                System.out.println("Updated: " + veh.toString());
+                System.out.println("Updated: " + vehicle.toString());
                 this.saveToFile();
                 return;
             }
@@ -116,8 +126,8 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
                     this.remove(list.indexOf(veh));
                     System.out.println("Deleted");
                     this.saveToFile();
-                    return;
                 }
+                return;
             }
         }
         System.out.println("Vehicle does not exist.");

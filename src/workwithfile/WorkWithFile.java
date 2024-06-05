@@ -45,7 +45,7 @@ public class WorkWithFile {
                 }
                 else if (choice == 1) {
                     list.check();
-                } 
+                }
                 else if (choice == 2) {
                     list.update();
                 } 
