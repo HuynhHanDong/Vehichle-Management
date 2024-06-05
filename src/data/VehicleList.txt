@@ -1,4 +1,3 @@
-ID:001 Name:aa Color:aa Price:20000.0 Brand:aa Type:aa Product year:1888
-ID:009 Name:zzz Color:zzz Price:20.0 Brand:zzz Type:zzz Product year:1999
-ID:009 Name:zzz Color:zzz Price:20.0 Brand:zzz Type:zzz Product year:1999
-ID:001 Name:aa Color:aa Price:20000.0 Brand:aa Type:aa Product year:1888
+ID:999 Name:bbb Color:bbb Price:2500.0 Brand:bbb Type:bbb Product year:1989
+ID:0000 Name:bbb Color:bbb Price:1000.0 Brand:bbb Type:bbb Product year:2020
+ID:9999 Name:aaa Color:aaa Price:100.0 Brand:aaa Type:aaa Product year:2000
