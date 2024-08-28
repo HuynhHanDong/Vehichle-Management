@@ -12,27 +12,28 @@ import controllers.VehicleList;
  * @author Huynh Han Dong
  */
 public interface InterfaceVehicleList {
+
     void add();
-    
+
     void check();
-    
+
     void update();
-    
+
     void delete();
-    
+
     void searchId();
-    
+
     void searchName();
-    
+
     void displayAll();
-    
+
     void displayDecsendingPrice();
-    
+
     void saveToFile();
-    
+
     void printAll();
-    
+
     void printDecsendingPrice();
-    
+
     VehicleList readFile();
 }

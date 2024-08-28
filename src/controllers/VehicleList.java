@@ -22,17 +22,17 @@ import models.Vehicle;
  *
  * @author Huynh Han Dong
  */
-public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleList{
+public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleList {
 
     @Override
     public void add() {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter id: ");
         String id = scan.nextLine();
-            
+
         VehicleList list = this.readFile();
-        for (Vehicle veh : list){
-            if (veh.getID().equals(id)){
+        for (Vehicle veh : list) {
+            if (veh.getID().equals(id)) {
                 System.out.println("This vehicle already existed.");
                 return;
             }
@@ -41,20 +41,43 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         String name = scan.nextLine();
         System.out.print("Enter color: ");
         String color = scan.nextLine();
-        System.out.print("Enter new price: ");
-        double price = scan.nextInt();
-        scan.nextLine();
-        if (price <= 0) {
-            System.out.println("Price must be greater than 0. Try again.");
-            return;
+        double price = 0;
+        boolean loopPrice = true;
+        while(loopPrice) {
+            try {
+                System.out.print("Enter price: ");
+                price = scan.nextDouble();
+                scan.nextLine();
+                if (price <= 0) {
+                    System.out.println("Price must be greater than 0. Please try again.");
+                }
+                else {
+                    loopPrice = false;
+                }
+            }
+            catch (Exception e){
+                System.out.println("Price must be number. Pleasse try again.");
+                scan.next();
+            }
         }
         System.out.print("Enter brand: ");
         String brand = scan.nextLine();
         System.out.print("Enter type: ");
         String type = scan.nextLine();
-        System.out.print("Enter year of production: ");
-        int productYear = scan.nextInt();
-        
+        int productYear = 0;
+        boolean loopYear = true;
+        while (loopYear) {
+            try{
+                System.out.print("Enter year of production: "); 
+                productYear = scan.nextInt();
+                loopYear = false;
+            }
+            catch (Exception e) {
+                System.out.println("Year must be number. Pleasse try again.");
+                scan.next();
+            }
+        }
+
         Vehicle vehicle = new Vehicle(id, name, color, price, brand, type, productYear);
         this.add(vehicle);
         System.out.println("Added Successfully");
@@ -67,8 +90,8 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         System.out.print("Enter id to check: ");
         String id = scan.nextLine();
         VehicleList list = this.readFile();
-        for (Vehicle veh : list){
-            if (veh.getID().equals(id)){
+        for (Vehicle veh : list) {
+            if (veh.getID().equals(id)) {
                 System.out.println("Exist vehicle.");
                 return;
             }
@@ -82,25 +105,48 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         System.out.print("Enter id to update: ");
         String id = scan.nextLine();
         VehicleList list = this.readFile();
-        for (Vehicle veh : list){
-            if (veh.getID().equals(id)){
+        for (Vehicle veh : list) {
+            if (veh.getID().equals(id)) {
                 System.out.print("Enter new name: ");
                 String name = scan.nextLine();
                 System.out.print("Enter new color: ");
                 String color = scan.nextLine();
-                System.out.print("Enter new price: ");
-                double price = scan.nextInt();
-                scan.nextLine();
-                if (price <= 0) {
-                    System.out.println("Price must be greater than 0. Try again.");
-                    return;
+                double price = 0;
+                boolean loopPrice = true;
+                while(loopPrice) {
+                    try {
+                        System.out.print("Enter price: ");
+                        price = scan.nextDouble();
+                        scan.nextLine();
+                        if (price <= 0) {
+                            System.out.println("Price must be greater than 0. Please try again.");
+                        }
+                        else {
+                            loopPrice = false;
+                        }
+                    }
+                    catch (Exception e){
+                        System.out.println("Price must be number. Pleasse try again.");
+                        scan.next();
+                    }
                 }
                 System.out.print("Enter new brand: ");
                 String brand = scan.nextLine();
                 System.out.print("Enter new type: ");
                 String type = scan.nextLine();
-                System.out.print("Enter new year of production: ");
-                int productYear = scan.nextInt();
+                int productYear = 0;
+                boolean loopYear = true;
+                while(loopYear) {
+                    try {
+                        System.out.print("Enter new year of production: ");
+                        productYear = scan.nextInt();
+                        loopYear = false;
+                    }
+                    catch (Exception e){
+                        System.out.println("Year must be number. Pleasse try again.");
+                        scan.next();
+                    }
+                }
                 Vehicle vehicle = new Vehicle(id, name, color, price, brand, type, productYear);
                 
                 this.set(list.indexOf(veh), vehicle);
@@ -118,11 +164,11 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         System.out.print("Enter id to delete: ");
         String id = scan.nextLine();
         VehicleList list = this.readFile();
-        for (Vehicle veh : list){
-            if (veh.getID().equals(id)){
+        for (Vehicle veh : list) {
+            if (veh.getID().equals(id)) {
                 System.out.println("Are you sure you want to delete this vehicle?  yes/no");
                 String ans = scan.nextLine();
-                if ("yes".equals(ans)){
+                if ("yes".equals(ans)) {
                     this.remove(list.indexOf(veh));
                     System.out.println("Deleted");
                     this.saveToFile();
@@ -139,8 +185,8 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         System.out.print("Enter id to search: ");
         String id = scan.nextLine();
         VehicleList list = this.readFile();
-        for (Vehicle veh : list){
-            if (veh.getID().equals(id)){
+        for (Vehicle veh : list) {
+            if (veh.getID().equals(id)) {
                 System.out.println(veh.toString());
                 return;
             }
@@ -156,8 +202,8 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         VehicleList list = this.readFile();
         list.sort(Comparator.comparing(Vehicle::getID).reversed());
         boolean found = false;
-        for (Vehicle veh : list){
-            if (veh.getName().equals(name)){
+        for (Vehicle veh : list) {
+            if (veh.getName().equals(name)) {
                 System.out.println(veh.toString());
                 found = true;
             }
@@ -170,7 +216,7 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
     @Override
     public void displayAll() {
         VehicleList list = this.readFile();
-        for (Vehicle veh : list){
+        for (Vehicle veh : list) {
             System.out.println(veh.toString());
         }
     }
@@ -180,21 +226,20 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         VehicleList list = this.readFile();
         list.sort(Comparator.comparingDouble(Vehicle::getPrice).reversed());
         System.out.println("All Vehicles sorted by price descending:");
-        for (Vehicle veh : list){
+        for (Vehicle veh : list) {
             System.out.println(veh.toString());
         }
     }
 
     @Override
     public void saveToFile() {
-        try(FileOutputStream fileOutput = new FileOutputStream("src\\data\\Vehicle.dat");
-            ObjectOutputStream write = new ObjectOutputStream(fileOutput)){
-            
+        try (FileOutputStream fileOutput = new FileOutputStream("src\\data\\Vehicle.dat");
+                ObjectOutputStream write = new ObjectOutputStream(fileOutput)) {
+
             write.writeObject(this);
             write.close();
             System.out.println("Saved");
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Failed to save");
         }
     }
@@ -204,19 +249,18 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         VehicleList list = this.readFile();
         try {
             FileWriter fileWriter = new FileWriter("src\\data\\VehicleList.txt");
-            
-            for (Vehicle veh : list){
+
+            for (Vehicle veh : list) {
                 String text = veh.toString();
                 fileWriter.write(text + "\n");
             }
             fileWriter.close();
             System.out.println("Printed to file");
-        } 
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Failed to print");
         }
     }
-    
+
     @Override
     public void printDecsendingPrice() {
         VehicleList list = this.readFile();
@@ -224,14 +268,13 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
             FileWriter fileWriter = new FileWriter("src\\data\\VehicleList.txt");
             list.sort(Comparator.comparingDouble(Vehicle::getPrice).reversed());
 
-            for (Vehicle veh : list){
+            for (Vehicle veh : list) {
                 String text = veh.toString();
                 fileWriter.write(text + "\n");
             }
             fileWriter.close();
             System.out.println("Printed to file");
-        } 
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Failed to print");
         }
     }
@@ -239,17 +282,16 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
     @Override
     public VehicleList readFile() {
         VehicleList result = new VehicleList();
-        try(FileInputStream fileInput = new FileInputStream("src\\data\\Vehicle.dat");
-            ObjectInputStream read = new ObjectInputStream(fileInput)){
-            
+        try (FileInputStream fileInput = new FileInputStream("src\\data\\Vehicle.dat");
+                ObjectInputStream read = new ObjectInputStream(fileInput)) {
+
             result = (VehicleList) read.readObject();
             read.close();
-        } catch(EOFException eof){
+        } catch (EOFException eof) {
             System.out.println("Failed to read");
-        } catch(IOException | ClassNotFoundException ex){
+        } catch (IOException | ClassNotFoundException ex) {
             System.out.println("Failed to read");
-        } 
+        }
         return result;
     }
 }
-    

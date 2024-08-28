@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author Huynh Han Dong
  */
-public class Vehicle implements Serializable{
+public class Vehicle implements Serializable {
+
     private String id;
     private String name;
     private String color;
@@ -19,11 +20,11 @@ public class Vehicle implements Serializable{
     private String brand;
     private String type;
     private int productYear;
-    
-    public Vehicle(){
+
+    public Vehicle() {
     }
-    
-    public Vehicle(String id, String name, String color, double price, String brand, String type, int productYear){
+
+    public Vehicle(String id, String name, String color, double price, String brand, String type, int productYear) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -32,65 +33,65 @@ public class Vehicle implements Serializable{
         this.type = type;
         this.productYear = productYear;
     }
-    
-    public String getID(){
+
+    public String getID() {
         return id;
     }
-    
-    public void setID(String id){
+
+    public void setID(String id) {
         this.id = id;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    
-    public String getColor(){
+
+    public String getColor() {
         return color;
     }
-    
-    public void setColor(String color){
+
+    public void setColor(String color) {
         this.color = color;
     }
-    
-    public double getPrice(){
+
+    public double getPrice() {
         return price;
     }
-    
-    public void setPrice(double price){
+
+    public void setPrice(double price) {
         this.price = price;
     }
-    
-    public String getBrand(){
+
+    public String getBrand() {
         return brand;
     }
-    
-    public void setBrand(String brand){
+
+    public void setBrand(String brand) {
         this.brand = brand;
     }
-    
-    public String getType(){
+
+    public String getType() {
         return type;
     }
-    
-    public void setType(String type){
+
+    public void setType(String type) {
         this.type = type;
     }
-    
-    public int getProductYear(){
+
+    public int getProductYear() {
         return productYear;
     }
 
-    public void setProductYear(int productYear){
+    public void setProductYear(int productYear) {
         this.productYear = productYear;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "ID:" + id + " Name:" + name + " Color:" + color + " Price:" + price + " Brand:" + brand + " Type:" + type + " Product year:" + productYear;
     }
 }
