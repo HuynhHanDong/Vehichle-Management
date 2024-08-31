@@ -11,7 +11,7 @@ import controllers.VehicleList;
  *
  * @author Huynh Han Dong
  */
-public interface InterfaceVehicleList {
+public interface IVehicleList {
 
     void add();
 
@@ -30,10 +30,6 @@ public interface InterfaceVehicleList {
     void displayDecsendingPrice();
 
     void saveToFile();
-
-    void printAll();
-
-    void printDecsendingPrice();
 
     VehicleList readFile();
 }

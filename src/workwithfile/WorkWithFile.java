@@ -7,7 +7,7 @@ package workwithfile;
 
 import controllers.VehicleList;
 import java.util.Scanner;
-import models.InterfaceVehicleList;
+import models.IVehicleList;
 
 /**
  *
@@ -20,7 +20,7 @@ public class WorkWithFile {
      * @param args
      */
     public static void main(String[] args) {
-        InterfaceVehicleList list = new VehicleList();
+        IVehicleList list = new VehicleList();
         boolean menu = true;
 
         while (menu) {
@@ -32,8 +32,7 @@ public class WorkWithFile {
             System.out.println("4. Search vehicle");
             System.out.println("5. Display vehicle");
             System.out.println("6. Save data to file");
-            System.out.println("7. Print vehicle list");
-            System.out.println("8. Exist");
+            System.out.println("7. Exist");
             System.out.println("----------------------------");
 
             try {
@@ -91,23 +90,6 @@ public class WorkWithFile {
                         list.saveToFile();
                         break;
                     case 7:
-                        System.out.println("\n----------- Menu -----------");
-                        System.out.println("1. Print all");
-                        System.out.println("2. Print all by descending price");
-                        System.out.println("----------------------------");
-                        System.out.print("Enter your choice: ");
-                        int num7 = scan.nextInt();
-                        switch (num7){
-                            case 1:
-                                list.printAll();
-                                break;
-                            case 2:
-                                list.printDecsendingPrice();
-                                break;
-                            default:
-                                System.out.println("Invalid choice. Try again.");
-                        }
-                    case 8:
                         System.out.println("Exit.");
                         menu = false;
                         break;

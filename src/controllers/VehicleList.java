@@ -8,21 +8,20 @@ package controllers;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
-import models.InterfaceVehicleList;
 import models.Vehicle;
+import models.IVehicleList;
 
 /**
  *
  * @author Huynh Han Dong
  */
-public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleList {
+public class VehicleList extends ArrayList<Vehicle> implements IVehicleList {
 
     @Override
     public void add() {
@@ -245,42 +244,7 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
     }
 
     @Override
-    public void printAll() {
-        VehicleList list = this.readFile();
-        try {
-            FileWriter fileWriter = new FileWriter("src\\data\\VehicleList.txt");
-
-            for (Vehicle veh : list) {
-                String text = veh.toString();
-                fileWriter.write(text + "\n");
-            }
-            fileWriter.close();
-            System.out.println("Printed to file");
-        } catch (IOException e) {
-            System.out.println("Failed to print");
-        }
-    }
-
-    @Override
-    public void printDecsendingPrice() {
-        VehicleList list = this.readFile();
-        try {
-            FileWriter fileWriter = new FileWriter("src\\data\\VehicleList.txt");
-            list.sort(Comparator.comparingDouble(Vehicle::getPrice).reversed());
-
-            for (Vehicle veh : list) {
-                String text = veh.toString();
-                fileWriter.write(text + "\n");
-            }
-            fileWriter.close();
-            System.out.println("Printed to file");
-        } catch (IOException e) {
-            System.out.println("Failed to print");
-        }
-    }
-
-    @Override
-    public VehicleList readFile() {
+    public VehicleList readFile(){
         VehicleList result = new VehicleList();
         try (FileInputStream fileInput = new FileInputStream("src\\data\\Vehicle.dat");
                 ObjectInputStream read = new ObjectInputStream(fileInput)) {
@@ -292,6 +256,5 @@ public class VehicleList extends ArrayList<Vehicle> implements InterfaceVehicleL
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println("Failed to read");
         }
-        return result;
-    }
+        return result;}
 }
