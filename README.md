@@ -1,5 +1,5 @@
 # Vehicle Management
-A	vehicle	management system with OOP in Java.
+A	vehicle	management system showcasing CRUD operations with OOP
 
 ## Main features:
 - Adding new vehicle.
